@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Obtener coordenadas</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        #btn {
+
+            color: black;
+            padding: 1em;
+
+            border: 1px solid rebeccapurple;
+
+            font-family: arial;
+            ;
+        }
+
+        p {
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Haz clic para obtener las coordenadas de tu dispositivo</p>
+
+    <button id="btn" onclick="getLocation()">Obtener Coordenadas</button>
+
+    <p id="demo"></p>
+
+    <script>
+        let demo = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                demo.innerHTML = "El navegador no dispone la capacidad de geolocalización";
+            }
+        }
+
+        function showPosition(position) {
+            demo.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+</body>
+
+</html>
